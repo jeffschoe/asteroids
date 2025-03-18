@@ -15,6 +15,9 @@ def main():
     #get a new GUI window:
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
+    clock = pygame.time.Clock() #create an object to help track time
+    dt = 0 #delta time
+
     #game loop
     while True:
         #This will check if the user has closed the window 
@@ -26,6 +29,9 @@ def main():
         
         screen.fill((0,0,0)) #fill the screen with a solid "black" color
         pygame.display.flip() #refresh the screen.
+
+        #Pause the game loop until 1/60th of a second has passed.
+        dt = clock.tick(60)/1000
 
 
 
