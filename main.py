@@ -3,6 +3,7 @@
 # throughout this file
 import pygame
 from constants import *
+from player import *
 
 
 def main():
@@ -18,21 +19,20 @@ def main():
     clock = pygame.time.Clock() #create an object to help track time
     dt = 0 #delta time
 
+    player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, PLAYER_RADIUS) #create player in middle of screen
+
     #game loop
     while True:
         #This will check if the user has closed the window 
-        #and exit the game loop if they do. It will make the 
-        #window's close button work.
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
         
         screen.fill((0,0,0)) #fill the screen with a solid "black" color
+        player.draw(screen)
         pygame.display.flip() #refresh the screen.
-
-        #Pause the game loop until 1/60th of a second has passed.
-        dt = clock.tick(60)/1000
-
+        dt = clock.tick(60)/1000 #Pause the game loop until 1/60th of a second has passed.
+        
 
 
 if __name__ == "__main__":
