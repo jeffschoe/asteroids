@@ -5,6 +5,9 @@ import pygame
 from constants import *
 from player import *
 
+updatable = pygame.sprite.Group()
+drawable = pygame.sprite.Group()
+Player.containers = (updatable, drawable)
 
 def main():
     pygame.init()
@@ -28,10 +31,17 @@ def main():
             if event.type == pygame.QUIT:
                 return
         
-        player.update(dt)
-        screen.fill((0,0,0)) #fill the screen with a solid "black" color
-        player.draw(screen)
         
+
+        #player.update(dt)
+        updatable.update(dt)
+        screen.fill((0,0,0)) #fill the screen with a solid "black" color
+        #player.draw(screen)
+        for thing in drawable:
+            thing.draw(screen)
+
+        
+
         pygame.display.flip() #refresh the screen.
         dt = clock.tick(60)/1000 #Pause the game loop until 1/60th of a second has passed.
         
