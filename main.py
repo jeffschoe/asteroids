@@ -28,8 +28,10 @@ def main():
             if event.type == pygame.QUIT:
                 return
         
+        player.update(dt)
         screen.fill((0,0,0)) #fill the screen with a solid "black" color
         player.draw(screen)
+        
         pygame.display.flip() #refresh the screen.
         dt = clock.tick(60)/1000 #Pause the game loop until 1/60th of a second has passed.
         
