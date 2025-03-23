@@ -4,10 +4,15 @@
 import pygame
 from constants import *
 from player import *
+from asteroidfield import *
 
+
+asteroids = pygame.sprite.Group()
 updatable = pygame.sprite.Group()
 drawable = pygame.sprite.Group()
+Asteroid.containers = (asteroids, updatable, drawable)
 Player.containers = (updatable, drawable)
+AsteroidField.containers = (updatable)
 
 def main():
     pygame.init()
@@ -23,6 +28,7 @@ def main():
     dt = 0 #delta time
 
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, PLAYER_RADIUS) #create player in middle of screen
+    asteroidfield = AsteroidField() # create asteroid field
 
     #game loop
     while True:
