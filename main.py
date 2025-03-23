@@ -1,8 +1,10 @@
+import sys
 import pygame
 from constants import *
 from player import Player
 from asteroid import Asteroid
 from asteroidfield import AsteroidField
+
 
 def main():
     pygame.init()
@@ -24,13 +26,17 @@ def main():
     dt = 0 #delta time
 
     while True:
-        #This will check if the user has closed the window 
-        for event in pygame.event.get():
+        for event in pygame.event.get(): #This will check if the user has closed the window 
             if event.type == pygame.QUIT:
                 return
         
         updatable.update(dt)
         
+        for asteroid in asteroids:
+            if asteroid.collides_with(player):
+                print("Game over!")
+                sys.exit()
+
         screen.fill("black") #fill the screen with a solid "black" color
     
         for obj in drawable:
