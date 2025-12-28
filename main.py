@@ -5,6 +5,7 @@ from player import Player
 from asteroid import Asteroid
 from asteroidfield import AsteroidField
 from shot import Shot
+from logger import log_state
 
 
 def main():
@@ -29,6 +30,8 @@ def main():
     dt = 0 #delta time
 
     while True:
+        log_state()
+
         for event in pygame.event.get(): #This will check if the user has closed the window 
             if event.type == pygame.QUIT:
                 return
